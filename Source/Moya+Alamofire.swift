@@ -15,11 +15,11 @@ public final class CancellableToken: Cancellable, CustomDebugStringConvertible {
     let request: Request?
     private(set) var canceled: Bool = false
 
-    private var lock: dispatch_semaphore_t = dispatch_semaphore_create(1)
+    private var lock: DispatchSemaphore = DispatchSemaphore(value: 1)
 
     public func cancel() {
-        dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER)
-        defer { dispatch_semaphore_signal(lock) }
+        lock.wait(timeout: DispatchTime.distantFuture)
+        defer { lock.signal() }
         guard !canceled else { return }
         canceled = true
         cancelAction()

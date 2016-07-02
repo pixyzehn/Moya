@@ -4,55 +4,74 @@ PODS:
     - Moya/Core (= 6.5.0)
   - Moya/Core (6.5.0):
     - Alamofire (~> 3.0)
-    - Result (~> 2.0)
-  - Moya/ReactiveCocoa (6.5.0):
-    - Moya/Core
-    - ReactiveCocoa (~> 4.0)
+    - Result (~> 2.1)
   - Moya/RxSwift (6.5.0):
     - Moya/Core
     - RxSwift (~> 2.0)
-  - Nimble (4.0.0)
-  - OHHTTPStubs (4.7.0):
-    - OHHTTPStubs/Default (= 4.7.0)
-  - OHHTTPStubs/Core (4.7.0)
-  - OHHTTPStubs/Default (4.7.0):
+  - Nimble (4.1.0)
+  - OHHTTPStubs (5.1.0):
+    - OHHTTPStubs/Default (= 5.1.0)
+  - OHHTTPStubs/Core (5.1.0)
+  - OHHTTPStubs/Default (5.1.0):
     - OHHTTPStubs/Core
     - OHHTTPStubs/JSON
     - OHHTTPStubs/NSURLSession
     - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (4.7.0):
+  - OHHTTPStubs/JSON (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (4.7.0):
+  - OHHTTPStubs/NSURLSession (5.1.0):
     - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (4.7.0)
+  - OHHTTPStubs/OHPathHelpers (5.1.0)
   - Quick (0.9.2)
-  - ReactiveCocoa (4.2.1):
-    - Result (~> 2.0)
-  - Result (2.0.0)
+  - Result (2.1.2)
+  - RxCocoa (2.5.0):
+    - RxSwift (~> 2.5)
   - RxSwift (2.5.0)
 
 DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire`, branch `swift3`)
   - Moya (from `../`)
-  - Moya/ReactiveCocoa (from `../`)
   - Moya/RxSwift (from `../`)
   - Nimble
   - OHHTTPStubs
   - Quick
+  - RxCocoa (from `https://github.com/ReactiveX/RxSwift.git`, branch `swift-3.0`)
+  - RxSwift (from `https://github.com/ReactiveX/RxSwift.git`, branch `swift-3.0`)
 
 EXTERNAL SOURCES:
+  Alamofire:
+    :branch: swift3
+    :git: https://github.com/Alamofire/Alamofire
   Moya:
-    :path: "../"
+    :path: ../
+  RxCocoa:
+    :branch: swift-3.0
+    :git: https://github.com/ReactiveX/RxSwift.git
+  RxSwift:
+    :branch: swift-3.0
+    :git: https://github.com/ReactiveX/RxSwift.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: e891699312a5215ad0da9f8322c5da949f90db35
+    :git: https://github.com/Alamofire/Alamofire
+  RxCocoa:
+    :commit: b72a2ce86d4aa2d395638a204de76501ad84c0f9
+    :git: https://github.com/ReactiveX/RxSwift.git
+  RxSwift:
+    :commit: b72a2ce86d4aa2d395638a204de76501ad84c0f9
+    :git: https://github.com/ReactiveX/RxSwift.git
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  Moya: 9970e907e6aa1e8bd5f4aa275b59d670933c2cf3
-  Nimble: 72bcc3e2f02242e6bfaaf8d9412ca7bfe3d8b417
-  OHHTTPStubs: d2bf6a0f407620d67e75a1d3f12d86a2b1dd15c0
+  Moya: d81046f3c8ecce3e4fd3b2b87670de73edccb2e9
+  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
+  OHHTTPStubs: 592f74439d2d72615115cf99a954237a3fbe26e5
   Quick: 18d057bc66451eedd5d1c8dc99ba2a5db6e60226
-  ReactiveCocoa: 5a42745f11ea236f405bb9ce5e97c5e3b23562dd
-  Result: 9e75e1111c774c6ac594e14907b15057053a7959
+  Result: 6e722d4a66b1408680dbfcdf51c0b1c4b706316a
+  RxCocoa: e1b1562e57a554d0fb2aabf9d71b637f177257c7
   RxSwift: 402b41a50e922a0368fc14cb3bc9f4427920e8ae
 
-PODFILE CHECKSUM: a3ce498a78552b79ee027ef1ae7d306c71cf33ad
+PODFILE CHECKSUM: 782533ea241f98bb5667fed039cfc077fbb39c97
 
 COCOAPODS: 1.0.1
