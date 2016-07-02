@@ -3,10 +3,10 @@ import Moya
 
 // MARK: - Provider setup
 
-private func JSONResponseDataFormatter(data: NSData) -> NSData {
+private func JSONResponseDataFormatter(data: Data) -> Data {
     do {
-        let dataAsJSON = try NSJSONSerialization.JSONObjectWithData(data, options: [])
-        let prettyData =  try NSJSONSerialization.dataWithJSONObject(dataAsJSON, options: .PrettyPrinted)
+        let dataAsJSON = try JSONSerialization.jsonObject(with: data, options: [])
+        let prettyData = try JSONSerialization.data(withJSONObject: dataAsJSON, options: .prettyPrinted)
         return prettyData
     } catch {
         return data //fallback to original data if it cant be serialized
@@ -20,7 +20,7 @@ let GitHubProvider = MoyaProvider<GitHub>(plugins: [NetworkLoggerPlugin(verbose:
 
 private extension String {
     var URLEscapedString: String {
-        return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())!
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
 }
 
@@ -31,7 +31,7 @@ public enum GitHub {
 }
 
 extension GitHub: TargetType {
-    public var baseURL: NSURL { return NSURL(string: "https://api.github.com")! }
+    public var baseURL: URL { return URL(string: "https://api.github.com")! }
     public var path: String {
         switch self {
         case .Zen:
@@ -54,18 +54,18 @@ extension GitHub: TargetType {
         }
     }
 
-    public var sampleData: NSData {
+    public var sampleData: Data {
         switch self {
         case .Zen:
-            return "Half measures are as bad as nothing at all.".dataUsingEncoding(NSUTF8StringEncoding)!
+            return "Half measures are as bad as nothing at all.".data(using: .utf8)!
         case .UserProfile(let name):
-            return "{\"login\": \"\(name)\", \"id\": 100}".dataUsingEncoding(NSUTF8StringEncoding)!
+            return "{\"login\": \"\(name)\", \"id\": 100}".data(using: .utf8)!
         case .UserRepositories(_):
-            return "[{\"name\": \"Repo Name\"}]".dataUsingEncoding(NSUTF8StringEncoding)!
+            return "[{\"name\": \"Repo Name\"}]".data(using: .utf8)!
         }
     }
 }
 
 public func url(route: TargetType) -> String {
-    return route.baseURL.URLByAppendingPathComponent(route.path).absoluteString
+    return try! route.baseURL.appendingPathComponent(route.path).absoluteString!
 }
