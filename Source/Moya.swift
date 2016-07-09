@@ -227,7 +227,7 @@ public extension MoyaProvider {
     }
 
     public final class func DefaultAlamofireManager() -> Manager {
-        let configuration = URLSessionConfiguration.default()
+        let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
 
         let manager = Manager(configuration: configuration)
